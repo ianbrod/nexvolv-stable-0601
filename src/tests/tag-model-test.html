@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tag Model Tests</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+    }
+    #results {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      min-height: 200px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tag Model Tests</h1>
+  <p>This page runs tests to verify the tag-based architecture implementation (Phase 1).</p>
+
+  <button id="runTests">Run Tests</button>
+
+  <div id="results">
+    <p>Test results will appear here...</p>
+  </div>
+
+  <script src="tag-model-test.js" type="module"></script>
+  <script type="module">
+    import { runTagModelTests } from './tag-model-test.js';
+
+    // Override console.log to display in the results div
+    const originalConsoleLog = console.log;
+    const originalConsoleError = console.error;
+    const resultsDiv = document.getElementById('results');
+
+    console.log = function(...args) {
+      originalConsoleLog.apply(console, args);
+      const message = args.map(arg => {
+        if (typeof arg === 'object') {
+          try {
+            return JSON.stringify(arg, null, 2);
+          } catch (e) {
+            return String(arg);
+          }
+        }
+        return String(arg);
+      }).join(' ');
+      resultsDiv.innerHTML += `<p>${message}</p>`;
+    };
+
+    console.error = function(...args) {
+      originalConsoleError.apply(console, args);
+      const message = args.map(arg => {
+        if (typeof arg === 'object') {
+          try {
+            return JSON.stringify(arg, null, 2);
+          } catch (e) {
+            return String(arg);
+          }
+        }
+        return String(arg);
+      }).join(' ');
+      resultsDiv.innerHTML += `<p class="error">${message}</p>`;
+    };
+
+    document.getElementById('runTests').addEventListener('click', async () => {
+      resultsDiv.innerHTML = '<p>Running tests...</p>';
+
+      try {
+        const result = await runTagModelTests();
+        if (result) {
+          resultsDiv.innerHTML += `<p class="success">All tests passed successfully!</p>`;
+        } else {
+          resultsDiv.innerHTML += `<p class="error">Some tests failed. See details above.</p>`;
+        }
+      } catch (error) {
+        resultsDiv.innerHTML += `<p class="error">Error running tests: ${error.message}</p>`;
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

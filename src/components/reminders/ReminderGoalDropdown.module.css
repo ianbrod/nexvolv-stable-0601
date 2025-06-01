@@ -1,0 +1,86 @@
+/* High specificity selectors targeting the dropdown structure */
+
+/* Category styling with maximum specificity */
+.dropdownCategory,
+.dropdownCategory span,
+.dropdownCategory > span {
+  font-weight: 600 !important;
+  font-family: inherit !important;
+}
+
+/* Goal styling with maximum specificity */
+.dropdownGoal,
+.dropdownGoal span,
+.dropdownGoal > span {
+  font-weight: 500 !important;
+  font-family: inherit !important;
+}
+
+/* Subgoal styling with maximum specificity */
+.dropdownSubgoal,
+.dropdownSubgoal span,
+.dropdownSubgoal > span {
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+
+/* Data attribute combinations with local classes for higher specificity */
+.dropdownCategory[data-dropdown-type="category"] {
+  font-weight: 600 !important;
+}
+
+.dropdownGoal[data-dropdown-type="goal"] {
+  font-weight: 500 !important;
+}
+
+.dropdownSubgoal[data-dropdown-type="subgoal"] {
+  font-weight: 400 !important;
+}
+
+/* Radix UI specific overrides with local classes */
+.dropdownCategory[data-radix-collection-item],
+.dropdownCategory[data-radix-collection-item] span {
+  font-weight: 600 !important;
+}
+
+.dropdownGoal[data-radix-collection-item],
+.dropdownGoal[data-radix-collection-item] span {
+  font-weight: 500 !important;
+}
+
+.dropdownSubgoal[data-radix-collection-item],
+.dropdownSubgoal[data-radix-collection-item] span {
+  font-weight: 400 !important;
+}
+
+/* Additional Radix UI specific selectors with local classes */
+.dropdownCategory[data-slot="dropdown-menu-item"],
+.dropdownCategory[data-slot="dropdown-menu-item"] span {
+  font-weight: 600 !important;
+}
+
+.dropdownGoal[data-slot="dropdown-menu-item"],
+.dropdownGoal[data-slot="dropdown-menu-item"] span {
+  font-weight: 500 !important;
+}
+
+.dropdownSubgoal[data-slot="dropdown-menu-item"],
+.dropdownSubgoal[data-slot="dropdown-menu-item"] span {
+  font-weight: 400 !important;
+}
+
+/* Sub-trigger specific selectors with local classes */
+.dropdownCategory[data-slot="dropdown-menu-sub-trigger"],
+.dropdownCategory[data-slot="dropdown-menu-sub-trigger"] span {
+  font-weight: 600 !important;
+}
+
+.dropdownGoal[data-slot="dropdown-menu-sub-trigger"],
+.dropdownGoal[data-slot="dropdown-menu-sub-trigger"] span {
+  font-weight: 500 !important;
+}
+
+.dropdownSubgoal[data-slot="dropdown-menu-sub-trigger"],
+.dropdownSubgoal[data-slot="dropdown-menu-sub-trigger"] span {
+  font-weight: 400 !important;
+}

@@ -1,0 +1,81 @@
+/* Direct calendar fixes targeting the exact HTML structure */
+
+/* Target the table directly */
+table.rdp-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: fixed !important;
+}
+
+/* Target the header row */
+tr.rdp-head_row {
+  display: table-row !important;
+  width: 100% !important;
+}
+
+/* Target the header cells */
+tr.rdp-head_row th.rdp-head_cell {
+  display: table-cell !important;
+  width: 14.28% !important; /* 100% / 7 days */
+  text-align: center !important;
+  font-size: 0.8rem !important;
+  font-weight: normal !important;
+  padding: 4px 0 !important;
+}
+
+/* Target the day rows */
+tr.rdp-row {
+  display: table-row !important;
+  width: 100% !important;
+}
+
+/* Target the day cells */
+tr.rdp-row td.rdp-cell {
+  display: table-cell !important;
+  width: 14.28% !important; /* 100% / 7 days */
+  text-align: center !important;
+  padding: 2px 0 !important;
+}
+
+/* Target the day buttons */
+button.rdp-button {
+  width: 32px !important;
+  height: 32px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+}
+
+/* Ensure the table takes up the full width */
+.rdp-month {
+  width: 100% !important;
+}
+
+/* Fix for the caption */
+.rdp-caption {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+  margin-bottom: 8px !important;
+}
+
+/* Fix for the navigation buttons */
+.rdp-nav {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Fix for the previous button */
+.rdp-nav_button_previous {
+  left: 0 !important;
+}
+
+/* Fix for the next button */
+.rdp-nav_button_next {
+  right: 0 !important;
+}

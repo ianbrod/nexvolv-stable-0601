@@ -1,0 +1,55 @@
+/* Custom styling for icons */
+
+/* Smooth rendering for all small icons and reminder elements */
+.soft-square-icon,
+span[style*="width"][style*="height"],
+.reminder-icon,
+[class*="reminder"] span[style*="background"],
+[class*="reminder"] span[style*="border-radius"] {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: transform; /* Optimize for changes */
+}
+
+/* Specific styling for SoftSquareIcon component */
+.soft-square-icon {
+  /* Ensure smooth rendering */
+  box-sizing: border-box;
+  vertical-align: top;
+  /* Prevent sub-pixel rendering issues */
+  transform: translate3d(0, 0, 0);
+  /* Ensure clean appearance */
+  outline: none;
+  border: none;
+}
+
+/* Pen icon dark mode adjustments */
+.custom-pen-icon {
+  /* Default size */
+  width: 24px;
+  height: 24px;
+}
+
+/* Dark mode adjustments */
+.dark .custom-pen-icon {
+  /* 7.5% smaller in dark mode */
+  width: 22.2px;
+  height: 22.2px;
+  stroke: transparent;
+}
+
+.dark .custom-pen-icon .pen-body {
+  stroke: transparent;
+}
+
+/* Pen tip in dark mode - make it darker */
+.dark .custom-pen-icon .pen-tip {
+  stroke: #333333; /* Darker color for the white ridge part */
+}
+
+/* Goals icon (bullseye) size adjustment in collapsed sidebar */
+[data-sidebar-id="left"].w-12 svg[class*="CustomBullseyeIcon"] {
+  transform: scale(1.075); /* Increase size by 7.5% */
+}

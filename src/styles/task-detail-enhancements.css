@@ -1,0 +1,41 @@
+/* Task Detail Panel Enhancements */
+
+/* Completed tag styling in light mode */
+.task-detail-panel .completed-tag {
+  color: #10b981 !important; /* Emerald 600 */
+  background-color: #10b9811a !important; /* Emerald 600 with 10% opacity */
+  border: 1px solid #10b98133 !important; /* Emerald 600 with 20% opacity */
+}
+
+/* Completed tag styling in dark mode */
+.dark .task-detail-panel .completed-tag {
+  color: #10b981e6 !important; /* Emerald 600 with 90% opacity */
+  background-color: #10b98126 !important; /* Emerald 600 with 15% opacity */
+  border: 1px solid #10b9814d !important; /* Emerald 600 with 30% opacity */
+}
+
+/* Edit task button styling in light mode */
+.edit-task-button {
+  color: #171717 !important; /* Gray 900 */
+  background-color: #f5f5f5 !important; /* Gray 100 */
+  border: 1px solid #e5e5e5 !important; /* Gray 200 */
+  transition: all 0.2s ease-in-out !important;
+}
+
+.edit-task-button:hover {
+  background-color: #e5e5e5 !important; /* Gray 200 */
+  border-color: #d4d4d4 !important; /* Gray 300 */
+}
+
+/* Edit task button styling in dark mode */
+.dark .edit-task-button {
+  color: #e5e5e5e6 !important; /* Gray 200 with 90% opacity */
+  background-color: #27272733 !important; /* Gray 800 with 20% opacity */
+  border: 1px solid #3f3f4666 !important; /* Gray 700 with 40% opacity */
+  transition: all 0.2s ease-in-out !important;
+}
+
+.dark .edit-task-button:hover {
+  background-color: #3f3f4666 !important; /* Gray 700 with 40% opacity */
+  border-color: #52525b80 !important; /* Gray 600 with 50% opacity */
+}

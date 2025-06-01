@@ -1,0 +1,65 @@
+/* Dark Mode Enhancements for specific pages */
+
+/* Captain's Log Page - Enhance contrast in dark mode */
+.dark [data-captains-log-page] {
+  --background: oklch(0.15 0.042 264.695); /* Slightly lighter background */
+  --card: oklch(0.23 0.042 265.755); /* Slightly lighter card background */
+  --border: oklch(1 0 0 / 15%); /* More visible borders */
+}
+
+/* Goals Page - Enhance contrast in dark mode */
+.dark [data-goals-page] {
+  --background: oklch(0.15 0.042 264.695); /* Slightly lighter background */
+  --card: oklch(0.23 0.042 265.755); /* Slightly lighter card background */
+  --border: oklch(1 0 0 / 15%); /* More visible borders */
+}
+
+/* Weekend days in calendar */
+.dark .weekend-day {
+  opacity: 0.6; /* Reduce opacity for weekend days in dark mode */
+}
+
+/* Calendar outside days in dark mode */
+.dark .rdp-day_outside {
+  opacity: 0.3 !important; /* Further reduce opacity for days outside current month */
+}
+
+/* Reminder dots in dark mode */
+.dark span[style*="boxShadow"] {
+  /* Change the reminder dot to use gold/yellow in dark mode */
+  box-shadow: 0 0 0 0.25px #f59e0b, inset 0 0 0 2px #f59e0b !important;
+  background-color: #f59e0b !important;
+}
+
+/* Completed reminder dots in dark mode */
+.dark span[style*="boxShadow"][class*="opacity"] {
+  box-shadow: 0 0 0 0.25px #d97706, inset 0 0 0 2px #d97706 !important;
+  background-color: #d97706 !important;
+  opacity: 0.5 !important;
+}
+
+/* Soften button contrast in dark mode */
+.dark button[data-slot="button"][class*="bg-primary"] {
+  background-color: oklch(0.6 0.013 255.508) !important;
+  color: oklch(0.15 0.042 264.695) !important;
+}
+
+.dark button[data-slot="button"][class*="bg-primary"]:hover {
+  background-color: oklch(0.7 0.013 255.508) !important;
+}
+
+/* Specific styling for modal action buttons */
+.dark [role="dialog"] button[data-slot="button"].bg-primary {
+  background-color: oklch(0.5 0.013 255.508) !important;
+  color: oklch(0.15 0.042 264.695) !important;
+}
+
+.dark [role="dialog"] button[data-slot="button"].bg-primary:hover {
+  background-color: oklch(0.6 0.013 255.508) !important;
+}
+
+/* Custom text selection color for dark mode */
+.dark ::selection {
+  background-color: oklch(0.4 0.013 255.508) !important;
+  color: oklch(0.984 0.003 247.858) !important;
+}

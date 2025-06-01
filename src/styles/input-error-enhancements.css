@@ -1,0 +1,17 @@
+/* Input Error Enhancements for Dark Mode */
+
+/* Enhance the visibility of error borders in dark mode */
+.dark input.border-destructive,
+.dark textarea.border-destructive,
+.dark select.border-destructive {
+  border-color: oklch(0.704 0.191 22.216) !important; /* Match the dark mode destructive color */
+  box-shadow: 0 0 0 1px oklch(0.704 0.191 22.216) !important; /* Add a subtle glow effect */
+}
+
+/* Add a subtle red glow effect on focus for error inputs in dark mode */
+.dark input.border-destructive:focus,
+.dark textarea.border-destructive:focus,
+.dark select.border-destructive:focus {
+  border-color: oklch(0.704 0.191 22.216) !important;
+  box-shadow: 0 0 0 2px oklch(0.704 0.191 22.216 / 30%) !important;
+}

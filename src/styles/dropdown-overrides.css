@@ -1,0 +1,88 @@
+/* Global dropdown font weight overrides for reminder dropdown */
+/* These serve as a fallback in case CSS modules don't have enough specificity */
+
+/* Maximum specificity selectors targeting Radix UI dropdown structures */
+[data-radix-dropdown-menu-content] [data-dropdown-type="category"],
+[data-radix-dropdown-menu-content] [data-dropdown-type="category"] span,
+[data-radix-dropdown-menu-content] [data-dropdown-type="category"] > span {
+  font-weight: 600 !important;
+  font-family: inherit !important;
+}
+
+[data-radix-dropdown-menu-content] [data-dropdown-type="goal"],
+[data-radix-dropdown-menu-content] [data-dropdown-type="goal"] span,
+[data-radix-dropdown-menu-content] [data-dropdown-type="goal"] > span {
+  font-weight: 500 !important;
+  font-family: inherit !important;
+}
+
+[data-radix-dropdown-menu-content] [data-dropdown-type="subgoal"],
+[data-radix-dropdown-menu-content] [data-dropdown-type="subgoal"] span,
+[data-radix-dropdown-menu-content] [data-dropdown-type="subgoal"] > span {
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+
+/* Additional overrides for sub-triggers */
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="category"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="category"] span {
+  font-weight: 600 !important;
+}
+
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="goal"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="goal"] span {
+  font-weight: 500 !important;
+}
+
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="subgoal"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="subgoal"] span {
+  font-weight: 400 !important;
+}
+
+/* Targeting data-slot attributes as well */
+[data-slot="dropdown-menu-content"] [data-dropdown-type="category"],
+[data-slot="dropdown-menu-content"] [data-dropdown-type="category"] span {
+  font-weight: 600 !important;
+}
+
+[data-slot="dropdown-menu-content"] [data-dropdown-type="goal"],
+[data-slot="dropdown-menu-content"] [data-dropdown-type="goal"] span {
+  font-weight: 500 !important;
+}
+
+[data-slot="dropdown-menu-content"] [data-dropdown-type="subgoal"],
+[data-slot="dropdown-menu-content"] [data-dropdown-type="subgoal"] span {
+  font-weight: 400 !important;
+}
+
+/* Direct targeting of dropdown items with data attributes */
+[data-dropdown-type="category"] {
+  font-weight: 600 !important;
+  font-family: inherit !important;
+}
+
+[data-dropdown-type="goal"] {
+  font-weight: 500 !important;
+  font-family: inherit !important;
+}
+
+[data-dropdown-type="subgoal"] {
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+
+/* Targeting spans within data-dropdown-type elements */
+[data-dropdown-type="category"] span {
+  font-weight: 600 !important;
+  font-family: inherit !important;
+}
+
+[data-dropdown-type="goal"] span {
+  font-weight: 500 !important;
+  font-family: inherit !important;
+}
+
+[data-dropdown-type="subgoal"] span {
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}

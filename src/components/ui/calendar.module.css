@@ -1,0 +1,54 @@
+/* Calendar module styles */
+.calendar {
+  --day-size: 36px;
+  --day-margin: 2px;
+  width: 100%;
+}
+
+.calendar :global(.rdp-months) {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar :global(.rdp-month) {
+  margin: 0;
+}
+
+.calendar :global(.rdp-table) {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendar :global(.rdp-head_row) {
+  display: table-row;
+}
+
+.calendar :global(.rdp-head_cell) {
+  display: table-cell;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--muted-foreground);
+  padding: 4px 0;
+  width: var(--day-size);
+}
+
+.calendar :global(.rdp-row) {
+  display: table-row;
+}
+
+.calendar :global(.rdp-cell) {
+  display: table-cell;
+  text-align: center;
+  padding: 0;
+  width: var(--day-size);
+}
+
+.calendar :global(.rdp-button) {
+  width: calc(var(--day-size) - var(--day-margin) * 2);
+  height: calc(var(--day-size) - var(--day-margin) * 2);
+  padding: 0;
+  border-radius: 4px;
+  margin: var(--day-margin);
+}

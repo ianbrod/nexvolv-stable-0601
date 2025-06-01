@@ -1,0 +1,11 @@
+/* Week view enhancements */
+
+/* Slightly increase contrast for gridlines in light mode ONLY */
+:root:not(.dark) .border-gray-100 {
+  border-color: rgb(229, 231, 235) !important; /* Slightly darker than gray-100 (rgb(243, 244, 246)) */
+}
+
+/* Keep the horizontal time slot borders with slightly more contrast in light mode ONLY */
+:root:not(.dark) div[style*="height: calc(100% / 19)"].border-t.border-gray-100 {
+  border-color: rgb(209, 213, 219) !important; /* Even more contrast for horizontal lines (gray-200) */
+}

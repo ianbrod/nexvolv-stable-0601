@@ -1,0 +1,126 @@
+{
+  "goals": [
+    {
+      "id": "goal-1",
+      "name": "Complete Project",
+      "description": "Finish the main project",
+      "status": "active",
+      "progress": 75,
+      "category": "Work",
+      "createdAt": "2023-01-01T12:00:00.000Z"
+    },
+    {
+      "id": "goal-2",
+      "name": "Learn React",
+      "description": "Master React fundamentals",
+      "status": "active",
+      "progress": 50,
+      "category": "Education",
+      "createdAt": "2023-01-02T12:00:00.000Z"
+    },
+    {
+      "id": "goal-3",
+      "name": "Exercise Regularly",
+      "description": "Work out 3 times a week",
+      "status": "active",
+      "progress": 30,
+      "category": "Health",
+      "createdAt": "2023-01-03T12:00:00.000Z"
+    },
+    {
+      "id": "goal-4",
+      "name": "Read 10 Books",
+      "description": "Read 10 books this year",
+      "status": "active",
+      "progress": 20,
+      "category": "Personal",
+      "createdAt": "2023-01-04T12:00:00.000Z"
+    },
+    {
+      "id": "goal-5",
+      "name": "Travel to Japan",
+      "description": "Plan and execute Japan trip",
+      "status": "pending",
+      "progress": 0,
+      "category": "Travel",
+      "createdAt": "2023-01-05T12:00:00.000Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "name": "Research competitors",
+      "description": "Look at similar products",
+      "status": "todo",
+      "priority": "high",
+      "dueDate": "2023-02-01T12:00:00.000Z",
+      "goalId": "goal-1",
+      "createdAt": "2023-01-01T12:00:00.000Z"
+    },
+    {
+      "id": "task-2",
+      "name": "Create wireframes",
+      "description": "Design initial wireframes",
+      "status": "in-progress",
+      "priority": "medium",
+      "dueDate": "2023-02-02T12:00:00.000Z",
+      "goalId": "goal-1",
+      "createdAt": "2023-01-02T12:00:00.000Z"
+    },
+    {
+      "id": "task-3",
+      "name": "Implement login page",
+      "description": "Code the login functionality",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2023-02-03T12:00:00.000Z",
+      "goalId": "goal-1",
+      "createdAt": "2023-01-03T12:00:00.000Z"
+    },
+    {
+      "id": "task-4",
+      "name": "Complete React tutorial",
+      "description": "Follow the official tutorial",
+      "status": "todo",
+      "priority": "low",
+      "dueDate": "2023-02-04T12:00:00.000Z",
+      "goalId": "goal-2",
+      "createdAt": "2023-01-04T12:00:00.000Z"
+    },
+    {
+      "id": "task-5",
+      "name": "Build a small project",
+      "description": "Create a small app to practice",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2023-02-05T12:00:00.000Z",
+      "goalId": "goal-2",
+      "createdAt": "2023-01-05T12:00:00.000Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Work"
+    },
+    {
+      "id": "cat-2",
+      "name": "Education"
+    },
+    {
+      "id": "cat-3",
+      "name": "Health"
+    },
+    {
+      "id": "cat-4",
+      "name": "Personal"
+    },
+    {
+      "id": "cat-5",
+      "name": "Travel"
+    }
+  ],
+  "habits": [],
+  "exportDate": "2023-01-15T12:00:00.000Z",
+  "version": "1.0"
+}

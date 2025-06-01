@@ -1,0 +1,147 @@
+/* Reset all calendar styles */
+.rdp {
+  --rdp-cell-size: 36px !important;
+  --rdp-accent-color: hsl(var(--primary)) !important;
+  --rdp-background-color: hsl(var(--primary)) !important;
+  --rdp-accent-color-dark: hsl(var(--primary)) !important;
+  --rdp-background-color-dark: hsl(var(--primary)) !important;
+  --rdp-outline: 2px solid var(--rdp-accent-color) !important;
+  --rdp-outline-selected: 2px solid var(--rdp-accent-color) !important;
+  margin: 0 !important;
+}
+
+.rdp-months {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.rdp-month {
+  background-color: transparent !important;
+  border-collapse: collapse !important;
+}
+
+.rdp-caption {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.rdp-multiple_months .rdp-caption {
+  position: relative !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+.rdp-caption_label {
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.rdp-nav {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.rdp-multiple_months .rdp-caption_start .rdp-nav {
+  position: absolute !important;
+  top: 50% !important;
+  left: 0 !important;
+  transform: translateY(-50%) !important;
+}
+
+.rdp-multiple_months .rdp-caption_end .rdp-nav {
+  position: absolute !important;
+  top: 50% !important;
+  right: 0 !important;
+  transform: translateY(-50%) !important;
+}
+
+.rdp-nav_button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  border-radius: 4px !important;
+}
+
+.rdp-head {
+  border: 0 !important;
+}
+
+.rdp-head_row,
+.rdp-row {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.rdp-head_cell {
+  width: var(--rdp-cell-size) !important;
+  height: 36px !important;
+  padding: 0 !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.rdp-tbody {
+  border: 0 !important;
+}
+
+.rdp-tfoot {
+  margin: 0.5em 0 0 !important;
+}
+
+.rdp-cell {
+  width: var(--rdp-cell-size) !important;
+  height: 36px !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.rdp-weeknumber {
+  font-size: 0.75em !important;
+}
+
+.rdp-day {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: var(--rdp-cell-size) !important;
+  height: var(--rdp-cell-size) !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+}
+
+.rdp-day_today {
+  font-weight: bold !important;
+  color: hsl(var(--accent-foreground)) !important;
+  background-color: hsl(var(--accent)) !important;
+}
+
+.rdp-day_selected {
+  color: hsl(var(--primary-foreground)) !important;
+  background-color: hsl(var(--primary)) !important;
+}
+
+.rdp-day_outside {
+  opacity: 0.5 !important;
+}
+
+.rdp-day_disabled {
+  opacity: 0.5 !important;
+}
+
+.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: hsl(var(--accent)) !important;
+}

@@ -1,0 +1,23 @@
+/* Global progress bar transitions */
+
+/* Target all progress bars by their data attributes */
+[data-progress-bar], 
+[data-parent-progress-bar], 
+[data-progress-bar="true"],
+.progress-bar,
+[role="progressbar"] {
+  transition: width 0.3s ease-out, background-color 0.3s ease !important;
+}
+
+/* Target the Radix UI progress bar specifically */
+[data-radix-progress-bar] {
+  transition: transform 0.3s ease-out !important;
+}
+
+/* Target the specific progress bar implementations */
+.goal-progress-low,
+.goal-progress-medium,
+.goal-progress-high,
+.goal-progress-complete {
+  transition: width 0.3s ease-out, background-color 0.3s ease !important;
+}

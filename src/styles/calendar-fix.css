@@ -1,0 +1,48 @@
+/* Calendar alignment fixes */
+.rdp-months {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.rdp-month {
+  margin: 0 !important;
+}
+
+.rdp-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important;
+}
+
+.rdp-head_row {
+  display: table-row !important;
+}
+
+.rdp-head_cell {
+  display: table-cell !important;
+  text-align: center !important;
+  font-size: 0.8rem !important;
+  font-weight: normal !important;
+  color: var(--muted-foreground) !important;
+  padding: 4px 0 !important;
+  width: 36px !important;
+}
+
+.rdp-row {
+  display: table-row !important;
+}
+
+.rdp-cell {
+  display: table-cell !important;
+  text-align: center !important;
+  padding: 0 !important;
+  width: 36px !important;
+}
+
+.rdp-button {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  border-radius: 4px !important;
+  margin: 0 auto !important;
+}

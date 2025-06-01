@@ -1,0 +1,106 @@
+/* Goal Card Custom Styles */
+
+/* Custom hover effect for goal cards */
+.goal-card-hover-effect {
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.goal-card-hover-effect:hover:not([data-is-subgoal="true"]) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Hover effect for cards with glowing effect - apply transform to the entire container */
+.goal-card-glowing-container {
+  transition: transform 0.15s ease-in-out;
+}
+
+.goal-card-glowing-container:hover:not([data-is-subgoal="true"]) {
+  transform: translateY(-2px);
+}
+
+/* Removed top margin from first goal to fix alignment issues in completed goals view */
+
+/* Custom progress bar colors based on completion percentage */
+.goal-progress-low {
+  --progress-color: var(--destructive);
+}
+
+.goal-progress-medium {
+  --progress-color: var(--chart-4);
+}
+
+.goal-progress-high {
+  --progress-color: var(--chart-2);
+}
+
+.goal-progress-complete {
+  --progress-color: var(--chart-3);
+}
+
+/* Progress bar transitions for smooth updates */
+[data-progress-bar], [data-parent-progress-bar], [data-progress-bar="true"] {
+  transition: width 0.3s ease-out, background-color 0.3s ease !important;
+}
+
+/* Ensure all progress bars have smooth transitions */
+.progress-bar, .progress, [role="progressbar"] {
+  transition: width 0.3s ease-out, background-color 0.3s ease !important;
+}
+
+/* Goal completion visual effects */
+.goal-completed {
+  background-color: rgba(var(--chart-3-rgb), 0.1) !important;
+  /* Don't set all borders to avoid overriding the category color on the left border */
+  border-top-color: var(--chart-3) !important;
+  border-right-color: var(--chart-3) !important;
+  border-bottom-color: var(--chart-3) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.goal-completed-text {
+  color: var(--chart-3-dark) !important;
+}
+
+.goal-completed-border {
+  border-style: solid !important;
+  border-width: 1px !important;
+  /* Don't set left border color to preserve category color */
+  border-top-color: var(--chart-3) !important;
+  border-right-color: var(--chart-3) !important;
+  border-bottom-color: var(--chart-3) !important;
+}
+
+/* Checkmark badge for completed goals */
+.goal-completed-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--chart-3);
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .goal-card-mobile-padding {
+    padding: 0.75rem !important;
+  }
+
+  .goal-card-mobile-spacing > * + * {
+    margin-top: 0.5rem !important;
+  }
+}
+
+/* Print styles for goal cards */
+@media print {
+  .goal-card-print {
+    break-inside: avoid;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+}

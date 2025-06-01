@@ -1,0 +1,6 @@
+id,name,description,status,progress,category,createdAt
+goal-1,Complete Project,Finish the main project,active,75,Work,2023-01-01T12:00:00.000Z
+goal-2,Learn React,Master React fundamentals,active,50,Education,2023-01-02T12:00:00.000Z
+goal-3,Exercise Regularly,Work out 3 times a week,active,30,Health,2023-01-03T12:00:00.000Z
+goal-4,Read 10 Books,Read 10 books this year,active,20,Personal,2023-01-04T12:00:00.000Z
+goal-5,Travel to Japan,Plan and execute Japan trip,pending,0,Travel,2023-01-05T12:00:00.000Z

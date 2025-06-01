@@ -1,0 +1,339 @@
+@import "react-day-picker/style.css";
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-rgb: 33, 33, 120; /* Approximate RGB equivalent for primary color */
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+
+  /* React Day Picker v9 variables */
+  --rdp-day_button-width: 2.25rem; /* Controls button width (w-9) */
+  --rdp-day_button-height: 2.25rem; /* Controls button height (h-9) */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-1-rgb: 230, 126, 34; /* Approximate RGB equivalent */
+  --chart-1-dark: oklch(0.546 0.222 41.116); /* Darker variant for text */
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-2-rgb: 41, 128, 185; /* Approximate RGB equivalent */
+  --chart-2-dark: oklch(0.5 0.118 184.704); /* Darker variant for text */
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-3-rgb: 46, 134, 193; /* Approximate RGB equivalent */
+  --chart-3-dark: oklch(0.298 0.07 227.392); /* Darker variant for text */
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-4-rgb: 241, 196, 15; /* Approximate RGB equivalent */
+  --chart-4-dark: oklch(0.728 0.189 84.429); /* Darker variant for text */
+  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-5-rgb: 230, 126, 34; /* Approximate RGB equivalent */
+  --chart-5-dark: oklch(0.669 0.188 70.08); /* Darker variant for text */
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Added for dynamic control bar positioning */
+  --sidebar-left-width: 0px; /* Default assuming initially collapsed or absent */
+  --sidebar-right-width: 0px; /* Default assuming initially collapsed or absent */
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.6 0.013 255.508); /* Reduced brightness for better dark mode contrast */
+  --primary-rgb: 150, 150, 200; /* Adjusted RGB equivalent for softer dark mode primary */
+  --primary-foreground: oklch(0.15 0.042 264.695); /* Darker text on primary buttons */
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-1-rgb: 142, 68, 173; /* Approximate RGB equivalent for dark mode */
+  --chart-1-dark: oklch(0.388 0.243 264.376); /* Darker variant for text */
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-2-rgb: 39, 174, 96; /* Approximate RGB equivalent for dark mode */
+  --chart-2-dark: oklch(0.596 0.17 162.48); /* Darker variant for text */
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-3-rgb: 243, 156, 18; /* Approximate RGB equivalent for dark mode */
+  --chart-3-dark: oklch(0.669 0.188 70.08); /* Darker variant for text */
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-4-rgb: 155, 89, 182; /* Approximate RGB equivalent for dark mode */
+  --chart-4-dark: oklch(0.527 0.265 303.9); /* Darker variant for text */
+  --chart-5: oklch(0.645 0.246 16.439);
+  --chart-5-rgb: 231, 76, 60; /* Approximate RGB equivalent for dark mode */
+  --chart-5-dark: oklch(0.545 0.246 16.439); /* Darker variant for text */
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* React Day Picker v9 variables (dark mode) */
+  --rdp-day_button-width: 2.25rem; /* Controls button width (w-9) */
+  --rdp-day_button-height: 2.25rem; /* Controls button height (h-9) */
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+.animate-accordion-down { animation: accordion-down 0.2s ease-out; }
+.animate-accordion-up { animation: accordion-up 0.2s ease-out; }
+
+/* Panel resizing styles */
+body.resizing, body.goal-accordion-resizing, body.panel-resizing {
+  cursor: ew-resize !important;
+  user-select: none;
+}
+
+body.resizing *, body.goal-accordion-resizing *, body.panel-resizing * {
+  cursor: ew-resize !important;
+}
+
+/* Goal accordion resize styles */
+.goal-accordion-container {
+  transition: width 0.2s ease-out;
+}
+
+.goal-accordion-container.resizing {
+  transition: none;
+}
+
+.goal-accordion-resize-handle {
+  cursor: ew-resize;
+  z-index: 10;
+  background: none;
+  width: 4px;
+  height: 100%;
+  transition: background-color 0.2s;
+  position: absolute;
+  top: 0;
+  right: -2px;
+}
+
+.goal-accordion-resize-handle:hover {
+  background-color: hsl(var(--primary) / 0.3);
+}
+
+.goal-accordion-resize-handle.dragging {
+  background-color: hsl(var(--primary) / 0.5);
+}
+
+/* Panel resize handle styles */
+.panel-resize-handle {
+  cursor: ew-resize;
+  z-index: 20;
+  background: none;
+  width: 6px;
+  height: 100%;
+  transition: background-color 0.2s;
+  position: absolute;
+  top: 0;
+  left: -3px;
+  border-left: 1px solid hsl(var(--border));
+}
+
+.panel-resize-handle:hover {
+  background-color: hsl(var(--primary) / 0.2);
+  border-left-color: hsl(var(--primary) / 0.5);
+}
+
+.panel-resize-handle.dragging {
+  background-color: hsl(var(--primary) / 0.4);
+  border-left-color: hsl(var(--primary));
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7); }
+  50% { box-shadow: 0 0 0 6px rgba(var(--primary-rgb), 0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0); }
+}
+
+.animate-pulse-border {
+  animation: pulse-border 1s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+/* Drag and drop animations */
+@keyframes folder-highlight {
+  0% { background-color: rgba(var(--primary-rgb), 0.1); }
+  50% { background-color: rgba(var(--primary-rgb), 0.3); }
+  100% { background-color: rgba(var(--primary-rgb), 0.1); }
+}
+
+.folder-highlight {
+  animation: folder-highlight 1s ease-out;
+}
+
+/* Custom styles for task status checkbox */
+[data-in-progress="true"] {
+  background-color: rgba(147, 51, 234, 0.5) !important; /* Purple-600 with 50% opacity */
+  border-color: rgb(147, 51, 234) !important; /* Purple-600 */
+  border-width: 1px !important;
+}
+
+/* Print styles for progress history chart */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Ensure chart is visible in print */
+  .recharts-wrapper {
+    width: 100% !important;
+    height: 400px !important;
+  }
+
+  /* Improve contrast for printed charts */
+  .recharts-cartesian-grid-horizontal line,
+  .recharts-cartesian-grid-vertical line {
+    stroke: #ccc !important;
+  }
+
+  .recharts-line-curve {
+    stroke-width: 3 !important;
+  }
+
+  .recharts-dot {
+    stroke-width: 2 !important;
+  }
+
+  /* Add page break controls */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .no-page-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Import custom styles for input error handling in dark mode */
+@import '../styles/input-error-enhancements.css';
+
+/* Dropdown font weight overrides with maximum specificity for reminder dropdown */
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-item][data-dropdown-type="category"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-item][data-dropdown-type="category"] span {
+  font-weight: 600 !important;
+}
+
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-item][data-dropdown-type="goal"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-item][data-dropdown-type="goal"] span {
+  font-weight: 500 !important;
+}
+
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-item][data-dropdown-type="subgoal"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-item][data-dropdown-type="subgoal"] span {
+  font-weight: 400 !important;
+}
+
+/* Additional overrides for sub-triggers */
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="category"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="category"] span {
+  font-weight: 600 !important;
+}
+
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="goal"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="goal"] span {
+  font-weight: 500 !important;
+}
+
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="subgoal"],
+[data-radix-dropdown-menu-content] [data-radix-dropdown-menu-sub-trigger][data-dropdown-type="subgoal"] span {
+  font-weight: 400 !important;
+}

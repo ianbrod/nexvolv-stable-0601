@@ -1,0 +1,11 @@
+id,name,description,status,priority,dueDate,goalId,createdAt
+task-1,Research competitors,Look at similar products,todo,high,2023-02-01T12:00:00.000Z,goal-1,2023-01-01T12:00:00.000Z
+task-2,Create wireframes,Design initial wireframes,in-progress,medium,2023-02-02T12:00:00.000Z,goal-1,2023-01-02T12:00:00.000Z
+task-3,Implement login page,Code the login functionality,todo,medium,2023-02-03T12:00:00.000Z,goal-1,2023-01-03T12:00:00.000Z
+task-4,Complete React tutorial,Follow the official tutorial,todo,low,2023-02-04T12:00:00.000Z,goal-2,2023-01-04T12:00:00.000Z
+task-5,Build a small project,Create a small app to practice,todo,medium,2023-02-05T12:00:00.000Z,goal-2,2023-01-05T12:00:00.000Z
+task-6,Go for a run,30 minute run,todo,medium,2023-02-06T12:00:00.000Z,goal-3,2023-01-06T12:00:00.000Z
+task-7,Gym session,Weight training,todo,medium,2023-02-07T12:00:00.000Z,goal-3,2023-01-07T12:00:00.000Z
+task-8,Read first book,Read "Atomic Habits",in-progress,low,2023-02-08T12:00:00.000Z,goal-4,2023-01-08T12:00:00.000Z
+task-9,Research Japan destinations,Find key places to visit,todo,low,2023-02-09T12:00:00.000Z,goal-5,2023-01-09T12:00:00.000Z
+task-10,Check passport validity,Ensure passport is valid,todo,high,2023-02-10T12:00:00.000Z,goal-5,2023-01-10T12:00:00.000Z

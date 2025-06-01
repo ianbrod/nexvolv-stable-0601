@@ -1,0 +1,257 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // Switched back to sqlite
+  url      = "file:./dev.db" // Define the path to the SQLite file directly
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  hashedPassword String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  categories    Category[]
+  goals         Goal[]
+  tasks         Task[]
+  reminders     Reminder[]
+  savedFilters  SavedFilter[]
+  goalProgressSnapshots GoalProgressSnapshot[]
+  notes         Note[]
+  customFolders CustomFolder[]
+}
+
+model Category {
+  id          String @id @default(cuid())
+  name        String
+  description String?
+  color       String @default("#808080") // Add color field with default gray
+  order       Int    @default(0) // Add order field for sorting
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goals       Goal[]
+  reminders   Reminder[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Goal {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  timeframe   String?   // Add timeframe field as seen in mockups
+  categoryId  String?   // Optional category
+  deadline    DateTime?
+  progress    Int       @default(0) // Percentage or similar
+  isArchived  Boolean   @default(false) // Add field for archival status
+  userId      String
+  order       Int       @default(0) // Add order field for sorting
+  lastDisplayedAt DateTime? // Track when a goal was last displayed on the dashboard
+  completedAt DateTime? // Track when a goal was completed
+
+  // --- Hierarchy Fields ---
+  parentGoalId String?   // ID of the parent goal (optional)
+  parentGoal  Goal?     @relation("GoalHierarchy", fields: [parentGoalId], references: [id], onDelete: SetNull)
+  subGoals    Goal[]    @relation("GoalHierarchy")
+  // -----------------------
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category    Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull) // SetNull if category deleted
+  tasks       Task[]
+  reminders   Reminder[]
+  progressSnapshots GoalProgressSnapshot[]
+  notes       Note[]    // Relation to notes
+  tags        String?   // Comma-separated list of tags
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([categoryId])
+  @@index([parentGoalId]) // Index the new field for potentially faster querying
+  @@index([order]) // Index the order field for faster sorting
+  // Optional: Index the new field if filtering by it frequently
+  // @@index([isArchived])
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum RecurrencePattern {
+  NONE
+  DAILY
+  WEEKDAYS
+  WEEKLY
+  BIWEEKLY
+  MONTHLY
+  YEARLY
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+model Task {
+  id                String            @id @default(cuid())
+  name              String
+  description       String?
+  priority          TaskPriority      @default(MEDIUM)
+  dueDate           DateTime?
+  status            TaskStatus        @default(TODO)
+  completedAt       DateTime?         // Track when a task was completed
+  startedAt         DateTime?         // Track when a task was started
+  recurrencePattern RecurrencePattern @default(NONE)
+  recurrenceEndDate DateTime?         // Optional end date for recurring tasks
+  parentTaskId      String?           // For recurring task instances, reference to the original task
+  lastGeneratedDate DateTime?         // Track when recurring instances were last generated
+  goalId            String?           // Optional goal link
+  userId            String
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal              Goal?             @relation(fields: [goalId], references: [id], onDelete: SetNull) // SetNull if goal deleted
+  notes             Note[]            // Relation to notes
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  // Self-relation for recurring tasks
+  parentTask        Task?              @relation("RecurringTasks", fields: [parentTaskId], references: [id], onDelete: SetNull)
+  recurringTasks    Task[]             @relation("RecurringTasks")
+
+  @@index([userId])
+  @@index([goalId])
+  @@index([status])
+  @@index([parentTaskId])
+  @@index([recurrencePattern])
+}
+
+
+
+model Reminder {
+  id                 String    @id @default(cuid())
+  title              String
+  description        String?
+  dueDate            DateTime
+  isCompleted        Boolean   @default(false)
+  completedAt        DateTime?
+  isRecurring        Boolean   @default(false)
+  recurrence         String?   // daily, weekly, monthly, yearly (kept for backward compatibility)
+
+  // Enhanced recurrence fields
+  recurrenceEndDate  DateTime? // When recurrence should stop
+  maxOccurrences     Int?      // Maximum number of occurrences
+  recurrenceInterval Int?      // Every N days/weeks/months (default 1)
+  weeklyDays         String?   // For weekly patterns: "1,3,5" for Mon,Wed,Fri (0=Sunday, 6=Saturday)
+  monthlyType        String?   // "date" or "weekday" (15th vs 2nd Tuesday)
+  monthlyWeekday     Int?      // Which weekday for monthly weekday patterns (0=Sunday, 6=Saturday)
+  monthlyWeekNumber  Int?      // Which week (1-5, -1 for last week)
+
+  excludedInstances  String?   // Comma-separated list of excluded instance IDs
+  completedInstances String?   // Comma-separated list of completed instance IDs
+  categoryId         String?   // Optional category
+  goalId             String?   // Optional goal
+  taskId             String?   // Optional task
+  userId             String
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category           Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  goal               Goal?     @relation(fields: [goalId], references: [id], onDelete: SetNull)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([categoryId])
+  @@index([goalId])
+  @@index([dueDate])
+}
+
+model SavedFilter {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  filterData  String    // JSON string containing filter configuration
+  isDefault   Boolean   @default(false)
+  isShared    Boolean   @default(false)
+  type        String?   @default("task") // Type of filter: "task" or "captains-log"
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([isDefault])
+  @@index([type])
+}
+
+model GoalProgressSnapshot {
+  id          String    @id @default(cuid())
+  timestamp   DateTime  @default(now())
+  progress    Int       // Progress percentage at the time of snapshot
+  notes       String?   // Optional notes about this progress update
+
+  // Relationships
+  goalId      String    // The goal this snapshot belongs to
+  goal        Goal      @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  userId      String    // The user who owns this goal
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Metadata
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Indexes for faster querying
+  @@index([goalId])
+  @@index([userId])
+  @@index([timestamp]) // For time-based queries
+}
+
+model Note {
+  id          String    @id @default(cuid())
+  content     String    // The note content
+  title       String?   // Optional title for the note
+
+  // Relationships - a note can be associated with a goal, task, or both
+  goalId      String?   // Optional goal association
+  goal        Goal?     @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  taskId      String?   // Optional task association
+  task        Task?     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  // User who created the note
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Metadata
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Indexes for faster querying
+  @@index([userId])
+  @@index([goalId])
+  @@index([taskId])
+}
+
+model CustomFolder {
+  id        String   @id @default(cuid())
+  name      String
+  color     String   @default("#6b7280") // Default gray color
+  order     Int      @default(0) // Order for sorting custom folders
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([userId, order])
+}

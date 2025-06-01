@@ -1,0 +1,59 @@
+/* Custom scrollbar styling */
+
+/* Firefox - hide by default */
+* {
+  scrollbar-width: none;
+}
+
+/* Chrome, Edge, and Safari - hide by default */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid transparent;
+}
+
+/* Only show scrollbars for elements that explicitly need them */
+.scrollable-when-needed {
+  scrollbar-width: none;
+}
+
+.scrollable-when-needed:hover {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+.scrollable-when-needed:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+}
+
+.scrollable-when-needed:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(155, 155, 155, 0.7);
+}
+
+/* Class for elements that should have visible scrollbars */
+.scrollbar-visible {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+/* Dark mode adjustments */
+.dark *::-webkit-scrollbar-thumb {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+.dark * {
+  scrollbar-color: rgba(200, 200, 200, 0.3) transparent;
+}

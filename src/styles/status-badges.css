@@ -1,0 +1,39 @@
+/* Status Badge Enhancements */
+
+/* Status badges in light mode */
+.status-badge-todo {
+  color: #2563eb !important; /* Blue 600 */
+  background-color: #dbeafe !important; /* Blue 100 */
+  border: 1px solid #bfdbfe !important; /* Blue 200 */
+}
+
+.status-badge-in-progress {
+  color: #7c3aed !important; /* Purple 600 */
+  background-color: #ede9fe !important; /* Purple 100 */
+  border: 1px solid #ddd6fe !important; /* Purple 200 */
+}
+
+.status-badge-completed {
+  color: #16a34a !important; /* Green 600 */
+  background-color: #dcfce7 !important; /* Green 100 */
+  border: 1px solid #bbf7d0 !important; /* Green 200 */
+}
+
+/* Status badges in dark mode - darker backgrounds */
+.dark .status-badge-todo {
+  color: #3b82f6 !important; /* Blue 500 */
+  background-color: #1e3a8a !important; /* Blue 900 */
+  border: 1px solid #1e40af !important; /* Blue 800 */
+}
+
+.dark .status-badge-in-progress {
+  color: #8b5cf6 !important; /* Purple 500 */
+  background-color: #4c1d95 !important; /* Purple 900 */
+  border: 1px solid #5b21b6 !important; /* Purple 800 */
+}
+
+.dark .status-badge-completed {
+  color: #22c55e !important; /* Green 500 */
+  background-color: #14532d !important; /* Green 900 */
+  border: 1px solid #166534 !important; /* Green 800 */
+}
